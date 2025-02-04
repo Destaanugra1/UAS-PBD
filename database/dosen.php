@@ -34,7 +34,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM dosen_1 $where ORDER BY id_dosen_
 
     <div class="height-100 bg-light">
         <div class="container">
-            <h1>Data Dosen</h1>
+            <h1>Data Dosen kh ah aha</h1>
             
             <!-- Add search form -->
             <form action="" class="form-inline" method="GET" class="d-flex">

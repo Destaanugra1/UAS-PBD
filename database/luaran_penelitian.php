@@ -41,7 +41,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM luaran_penelitian_1 ORDER BY id_l
         echo "<td>".$data['judul_1']."</td>";
         echo "<td>".$data['penerbit_1']."</td>";
         echo "<td>".$data['tahun_terbit_1']."</td>";
-        echo "<td><a href='../ubah/ubah_luaran.php?id_luaran_1=".$data['id_luaran_1']."'>Edit</a> | <a href='../hapus/hapus_penelitian.php?id_luaran_1=".$data['id_luaran_1']."'>Delete</a></td>";
+        echo "<td><a href='../ubah/ubah_luaran.php?id_luaran_1=".$data['id_luaran_1']."'>Edit</a> | <a href='../hapus/hapus_luaran.php?id_luaran_1=".$data['id_luaran_1']."'>Delete</a></td>";
         echo "</tr>";
       }
       ?>
@@ -70,7 +70,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM luaran_penelitian_1 ORDER BY id_l
 
         function confirmDelete(id) {
             if (confirm("Are you sure you want to delete this record?")) {
-                window.location.href = "../hapus/hapus_penelitian.php?id_penelitian_1="+id;
+                window.location.href = "../hapus/hapus_luaran.php?id_luaran_1="+id;
             }
         }
     </script>

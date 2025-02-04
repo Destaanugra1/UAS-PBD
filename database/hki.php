@@ -68,7 +68,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM  hki_1 ORDER BY id_hki_1 DESC");
 
         function confirmDelete(id) {
             if (confirm("Are you sure you want to delete this record?")) {
-                window.location.href = "../hapus/hapus_penelitian.php?id_penelitian_1="+id;
+                window.location.href = "../hapus/hapus_hki.php?id_hki_1 ="+id;
             }
         }
     </script>

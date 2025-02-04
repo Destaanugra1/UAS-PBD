@@ -1,7 +1,17 @@
 <?php
 include_once("../koneksi.php");
 $result = mysqli_query($mysqli, "SELECT * FROM mahasiswa_1 ORDER BY npm_1 DESC");
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+$where = "";
+if (!empty($search)) {
+    $where = "WHERE nama_dosen_1 LIKE '%$search%' 
+              OR nidn_1 LIKE '%$search%' 
+              OR fakultas_1 LIKE '%$search%' 
+              OR program_studi_1 LIKE '%$search%'";
+}
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -23,6 +33,15 @@ $result = mysqli_query($mysqli, "SELECT * FROM mahasiswa_1 ORDER BY npm_1 DESC")
     <div class="height-100 bg-light">
         <div class="container">
             <h1>Data Mahasiswa</h1>
+            <form action="" class="form-inline" method="GET" class="d-flex">
+                    <div class="form-group col-md-6">
+                        <input type="text" name="search" class="form-control mt-2"  placeholder="Cari dosen..." value="<?php echo $search; ?>">
+                        <button type="submit" class="btn btn-primary ">Cari dosen</button>
+                    </div>
+                    <?php if(!empty($search)): ?>
+                                <a href="dosen.php" class="btn btn-secondary ms-2">Reset</a>
+                            <?php endif; ?>
+                </form>
             <a href="../tambah/tambah_mahasiswa.php" class="btn">Tambah Mahasiswa</a><br/><br/>
             <table>
                 <tr>

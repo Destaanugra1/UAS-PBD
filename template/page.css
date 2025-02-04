@@ -24,6 +24,10 @@ body {
     transition: .5s;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 a {
     text-decoration: none;
     all: unset;

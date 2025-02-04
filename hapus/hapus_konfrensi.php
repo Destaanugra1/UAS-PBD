@@ -1,8 +1,19 @@
 <?php
-include "../koneksi.php";
+include_once("../koneksi.php");
 
-$id_dosen_1 = $_GET['id_konferensi_1'];
-mysqli_query($mysqli, "DELETE FROM konferensi_1 WHERE id_konferensi_1 ='$id_konferensi_1'");
+if (isset($_GET['id_konferensi_1'])) {
+    $id_konferensi_1 = mysqli_real_escape_string($mysqli, $_GET['id_konferensi_1']);
 
-header("location: ../database/konfrensi.php");
+    $query = "DELETE FROM konferensi_1 WHERE id_konferensi_1 = '$id_konferensi_1'";
+    $result = mysqli_query($mysqli, $query);
+
+    if ($result) {
+        header("Location: ../database/konfrensi.php");
+        exit();
+    } else {
+        echo "Gagal menghapus data: " . mysqli_error($mysqli);
+    }
+} else {
+    echo "ID tidak ditemukan.";
+}
 ?>

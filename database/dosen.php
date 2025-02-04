@@ -1,7 +1,6 @@
 <?php
 include_once("../koneksi.php");
 
-// Add search functionality
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 $where = "";
 if (!empty($search)) {
@@ -10,7 +9,6 @@ if (!empty($search)) {
               OR fakultas_1 LIKE '%$search%' 
               OR program_studi_1 LIKE '%$search%'";
 }
-
 
 $result = mysqli_query($mysqli, "SELECT * FROM dosen_1 $where ORDER BY id_dosen_1 DESC");
 ?>
@@ -22,9 +20,13 @@ $result = mysqli_query($mysqli, "SELECT * FROM dosen_1 $where ORDER BY id_dosen_
     <link rel="stylesheet" href="../page.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="table.css">
+    <style>
+      body {
+        margin-top: 15vh;
+      }
+    </style>
 </head>
-<body id="body-pd" class="mx-auto p-2">
+<body id="body-pd" class="penelitian">
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
@@ -32,63 +34,60 @@ $result = mysqli_query($mysqli, "SELECT * FROM dosen_1 $where ORDER BY id_dosen_
 
     <?php include_once("../template/sidebar.php"); ?>
 
-    <div class="height-100 bg-light">
-        <div class="container">
-            <h1>Data Dosen kh ah aha</h1>
-            
-            <!-- Add search form -->
-            <form action="" class="form-inline" method="GET" class="d-flex">
-                <div class="form-group col-md-6">
-                    <input type="text" name="search" class="form-control mt-2"  placeholder="Cari dosen..." value="<?php echo $search; ?>">
-                    <button type="submit" class="btn btn-primary ">Cari dosen</button>
-                </div>
-                <?php if(!empty($search)): ?>
-                            <a href="dosen.php" class="btn btn-secondary ms-2">Reset</a>
-                        <?php endif; ?>
-            </form>
-            <!-- <div class="row mb-3">
-                <div class="col-md-6">
-                    <form action="" method="GET" class="d-flex">
-                        <input type="text" name="search" class="form-control me-2" placeholder="Cari dosen..." value="<?php echo $search; ?>">
-                        <button type="submit" class="btn btn-primary">Cari</button>
-                        <?php if(!empty($search)): ?>
-                            <a href="dosen.php" class="btn btn-secondary ms-2">Reset</a>
-                        <?php endif; ?>
-                    </form>
-                </div>
-            </div> -->
-
-            <a href="../tambah/tambah_dosen.php" class="btn">Tambah Dosen</a><br/><br/>
-            <table>
-                <tr>
-                  <th>No</th>
-                  <th>ID Dosen</th>
-                  <th>Nama Dosen</th>
-                  <th>NIDN</th>
-                  <th>Fakultas</th>
-                  <th>Program Studi</th>
-                  <th>Email</th>
-                  <th>No Telepon</th>
-                  <th>Update</th>
-                </tr>
-                <?php
-                $no = 1;
-                while ($data = mysqli_fetch_array($result)) {
-                  echo "<tr>";
-                  echo "<td>".$no++."</td>";
-                  echo "<td>".$data['id_dosen_1']."</td>";
-                  echo "<td>".$data['nama_dosen_1']."</td>";
-                  echo "<td>".$data['nidn_1']."</td>";
-                  echo "<td>".$data['fakultas_1']."</td>";
-                  echo "<td>".$data['program_studi_1']."</td>";
-                  echo "<td>".$data['email_1']."</td>";
-                  echo "<td>".$data['no_telepon_1']."</td>";
-                  echo "<td><a href='../ubah/ubah_dosen.php?id_dosen_1=".$data['id_dosen_1']."'>Edit</a> | <a href='javascript:void(0);' onclick='confirmDelete(".$data['id_dosen_1'].")'>Delete</a></td>";
-                  echo "</tr>";
-                }
-                ?>
+    <div class="container ">
+        <form action="" method="GET" class="d-flex gap-2 align-items-center p-2">
+            <div class="form-group">
+                <input type="text" 
+                    name="search" 
+                    class="form-control"  
+                    placeholder="Cari dosen..."
+                    value="<?php echo $search; ?>">
+            </div>
+            <button type="submit" class="btn btn-primary h-100">Cari</button>
+        </form>
+        
+        <a href="../tambah/tambah_dosen.php" class="btn btn-primary mb-3">Tambah Dosen</a>
+        
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>No</th>
+                        <th>ID Dosen</th>
+                        <th>Nama Dosen</th>
+                        <th>NIDN</th>
+                        <th>Fakultas</th>
+                        <th>Program Studi</th>
+                        <th>Email</th>
+                        <th>No Telepon</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $no = 1;
+                    while ($data = mysqli_fetch_array($result)) {
+                        echo "<tr>";
+                        echo "<td>".$no++."</td>";
+                        echo "<td>".$data['id_dosen_1']."</td>";
+                        echo "<td>".$data['nama_dosen_1']."</td>";
+                        echo "<td>".$data['nidn_1']."</td>";
+                        echo "<td>".$data['fakultas_1']."</td>";
+                        echo "<td>".$data['program_studi_1']."</td>";
+                        echo "<td>".$data['email_1']."</td>";
+                        echo "<td>".$data['no_telepon_1']."</td>";
+                        echo "<td>
+                            <a href='../ubah/ubah_dosen.php?id_dosen_1=".$data['id_dosen_1']."' class='btn btn-sm btn-warning'>Edit</a>
+                            <button onclick='confirmDelete(".$data['id_dosen_1'].")' class='btn btn-sm btn-danger'>Hapus</button>
+                            </td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
             </table>
         </div>
+        
+        <a href="../index.php" class="btn btn-secondary">Kembali</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -113,8 +112,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM dosen_1 $where ORDER BY id_dosen_
         });
 
         function confirmDelete(id) {
-            if (confirm("Are you sure you want to delete this record?")) {
-                window.location.href = "../hapus/hapus_penelitian.php?id_penelitian_1="+id;
+            if (confirm("Apakah yakin ingin menghapus data?")) {
+                window.location.href = "../hapus/hapus_dosen.php?id_dosen_1="+id;
             }
         }
     </script>

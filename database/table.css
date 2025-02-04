@@ -4,6 +4,7 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
+
 }
 .container {
   width: 80%;
@@ -55,4 +56,12 @@ a:hover {
 
 .body {
   margin-top: 20px;
+}
+
+.penelitian {
+  margin-top: 20px;
+}
+
+.table-responsive {
+  overflow-x: auto;
 }

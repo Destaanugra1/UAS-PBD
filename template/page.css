@@ -80,6 +80,11 @@ a {
     z-index: var(--z-fixed);
 }
 
+.l-navbar:hover {
+    left: 0;
+    width: calc(var(--nav-width) + 156px);
+}
+
 .nav {
     height: 100%;
     display: flex;
@@ -182,4 +187,4 @@ a {
     .body-pd {
         padding-left: calc(var(--nav-width) + 188px);
     }
-} 
+}

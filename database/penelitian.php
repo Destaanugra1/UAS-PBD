@@ -1,6 +1,7 @@
 <?php
 include_once("../koneksi.php");
-$result = mysqli_query($mysqli, "SELECT * FROM penelitian_1 ORDER BY id_penelitian_1 DESC");
+
+$search = isset($_GET['search']) ? $_GET['search'] : '';
 $where = "";
 if (!empty($search)) {
     $where = "WHERE nama_dosen_1 LIKE '%$search%' 
@@ -8,6 +9,7 @@ if (!empty($search)) {
               OR fakultas_1 LIKE '%$search%' 
               OR program_studi_1 LIKE '%$search%'";
 }
+$result = mysqli_query($mysqli, "SELECT * FROM penelitian_1 $where ORDER BY id_penelitian_1 DESC");
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +19,11 @@ if (!empty($search)) {
     <link rel="stylesheet" href="../page.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="table.css">
+    <style>
+      body {
+        margin-top: 15vh;
+      }
+    </style>
 </head>
 <body id="body-pd">
     <header class="header" id="header">
@@ -27,11 +33,22 @@ if (!empty($search)) {
     
     <?php include_once("../template/sidebar.php"); ?>
 
-    <div class="height-100 bg-light">
-        <div class="container">
-            <h1>Data Penelitian</h1>
-            <a href="../tambah/tambah_penelitian.php" class="btn">Tambah Penelitian</a><br/><br/>
-            <table>
+    <div class="container mt-5">
+        <form action="" method="GET" class="d-flex gap-2 align-items-center">
+            <div class="form-group">
+                <input type="text" 
+                    name="search" 
+                    class="form-control"  
+                    placeholder="Cari penelitian..."
+                    value="<?php echo $search; ?>">
+            </div>
+            <button type="submit" class="btn btn-primary h-100">Cari</button>
+        </form>
+    
+        <a href="../tambah/tambah_penelitian.php" class="btn btn-success my-3">Tambah Penelitian</a>
+    
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
                 <tr>
                     <th>No</th>
                     <th>ID Penelitian</th>
@@ -41,8 +58,10 @@ if (!empty($search)) {
                     <th>Sumber Dana</th>
                     <th>Jumlah Dana</th>
                     <th>Status Penelitian</th>
-                    <th>Update</th>
+                    <th>Aksi</th>
                 </tr>
+            </thead>
+            <tbody>
                 <?php
                 $no = 1;
                 while ($data = mysqli_fetch_array($result)) {
@@ -55,12 +74,17 @@ if (!empty($search)) {
                     echo "<td>".$data['sumber_dana_1']."</td>";
                     echo "<td>".$data['jumlah_dana_1']."</td>";
                     echo "<td>".$data['status_penelitian_1']."</td>";
-                    echo "<td><a href='../ubah/ubah_penelitian.php?id_penelitian_1=".$data['id_penelitian_1']."'>Edit</a> | <a href='javascript:void(0);' onclick='confirmDelete(".$data['id_penelitian_1'].")'>Delete</a></td>";
+                    echo "<td>
+                        <a href='../ubah/ubah_penelitian.php?id_penelitian_1=".$data['id_penelitian_1']."' class='btn btn-warning btn-sm'>Edit</a> 
+                        <a href='#' onclick='confirmDelete(".$data['id_penelitian_1'].")' class='btn btn-danger btn-sm'>Delete</a>
+                    </td>";
                     echo "</tr>";
                 }
                 ?>
-            </table>
-        </div>
+            </tbody>
+        </table>
+        
+        <a href="../index.php" class="btn btn-secondary">Kembali</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

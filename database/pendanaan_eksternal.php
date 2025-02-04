@@ -1,49 +1,87 @@
 <?php
 include_once("../koneksi.php");
-$result = mysqli_query($mysqli, "SELECT * FROM pendanaan_eksternal_1 ORDER BY id_pendanaan_1 DESC");
+
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+$where = "";
+if (!empty($search)) {
+    $where = "WHERE nama_pemberi_dana_1 LIKE '%$search%' 
+              OR id_penelitian_1 LIKE '%$search%' 
+              OR tahun_1 LIKE '%$search%'";
+}
+$result = mysqli_query($mysqli, "SELECT * FROM pendanaan_eksternal_1 $where ORDER BY id_pendanaan_1 DESC");
 ?>
 
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Halaman Data Pendanaan Eksternal Kelas 3B</title>
     <link rel="stylesheet" href="../page.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="table.css">
-  </head>
-  <body id="body-pd">
-  <header class="header" id="header">
+    <style>
+      body {
+        margin-top: 15vh;
+      }
+    </style>
+</head>
+<body id="body-pd">
+    <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
     </header>
+    
     <?php include_once("../template/sidebar.php"); ?>
-    <a href="../tambah/tambah_pendanaan.php">Tambah Dana</a><br/><br/>
-    <table width='80%' border=1>
-      <tr>
-        <th>No</th>
-        <th>ID Pendanaan</th>
-        <th>ID Penelitian</th>
-        <th>Nama Pemberi Dana</th>
-        <th>Jumlah Dana</th>
-        <th>Tahun</th>
-        <th>Update</th>
-      </tr>
-      <?php
-      $no = 1;
-      while ($data = mysqli_fetch_array($result)) {
-        echo "<tr>";
-        echo "<td>".$no++."</td>";
-        echo "<td>".$data['id_pendanaan_1']."</td>";
-        echo "<td>".$data['id_penelitian_1']."</td>";
-        echo "<td>".$data['nama_pemberi_dana_1']."</td>";
-        echo "<td>".$data['jumlah_dana_1']."</td>";
-        echo "<td>".$data['tahun_1']."</td>";
-        echo "<td><a href='../ubah/ubah_pendanaan.php?id_pendanaan_1=".$data['id_pendanaan_1']."'>Edit</a> | <a href='../hapus/hapus_pendanaan.php?id_pendanaan_1=".$data['id_pendanaan_1']."'>Delete</a></td>";
-        echo "</tr>";
-      }
-      ?>
-    </table>
-    <a href="../index.php">Kembali</a>
+
+    <div class="container mt-5">
+        <form action="" method="GET" class="d-flex gap-2 align-items-center">
+            <div class="form-group">
+                <input type="text" 
+                    name="search" 
+                    class="form-control"  
+                    placeholder="Cari pendanaan..."
+                    value="<?php echo $search; ?>">
+            </div>
+            <button type="submit" class="btn btn-primary h-100">Cari</button>
+        </form>
+    
+        <a href="../tambah/tambah_pendanaan.php" class="btn btn-success my-3">Tambah Dana</a>
+    
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>No</th>
+                    <th>ID Pendanaan</th>
+                    <th>ID Penelitian</th>
+                    <th>Nama Pemberi Dana</th>
+                    <th>Jumlah Dana</th>
+                    <th>Tahun</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $no = 1;
+                while ($data = mysqli_fetch_array($result)) {
+                    echo "<tr>";
+                    echo "<td>".$no++."</td>";
+                    echo "<td>".$data['id_pendanaan_1']."</td>";
+                    echo "<td>".$data['id_penelitian_1']."</td>";
+                    echo "<td>".$data['nama_pemberi_dana_1']."</td>";
+                    echo "<td>".$data['jumlah_dana_1']."</td>";
+                    echo "<td>".$data['tahun_1']."</td>";
+                    echo "<td>
+                        <a href='../ubah/ubah_pendanaan.php?id_pendanaan_1=".$data['id_pendanaan_1']."' class='btn btn-warning btn-sm'>Edit</a> 
+                        <a href='#' onclick='confirmDelete(".$data['id_pendanaan_1'].")' class='btn btn-danger btn-sm'>Delete</a>
+                    </td>";
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+        
+        <a href="../index.php" class="btn btn-secondary">Kembali</a>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function(event) { 
@@ -67,9 +105,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM pendanaan_eksternal_1 ORDER BY id
 
         function confirmDelete(id) {
             if (confirm("Are you sure you want to delete this record?")) {
-                window.location.href = "../hapus/hapus_penelitian.php?id_penelitian_1="+id;
+                window.location.href = "../hapus/hapus_pendanaan.php?id_pendanaan_1="+id;
             }
         }
     </script>
-  </body>
+</body>
 </html>

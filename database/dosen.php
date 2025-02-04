@@ -16,7 +16,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM dosen_1 $where ORDER BY id_dosen_
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Halaman Data Dosen Kelas 3B</title>
+    <title>Halaman Data Dosen</title>
     <link rel="stylesheet" href="../page.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -29,7 +29,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM dosen_1 $where ORDER BY id_dosen_
 <body id="body-pd" class="penelitian">
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+        <h3>Data Dosen</h3>
     </header>
 
     <?php include_once("../template/sidebar.php"); ?>

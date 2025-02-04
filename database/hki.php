@@ -14,7 +14,11 @@ $result = mysqli_query($mysqli, "SELECT * FROM hki_1 $where ORDER BY id_hki_1 DE
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
     <title>Halaman Data Hki Kelas 3B</title>
+=======
+    <title>Halaman Data Hki</title>
+>>>>>>> cc245a6 (Update dashboard, tambah our, styles tabel tambah dan edit)
     <link rel="stylesheet" href="../page.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -27,7 +31,11 @@ $result = mysqli_query($mysqli, "SELECT * FROM hki_1 $where ORDER BY id_hki_1 DE
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+<<<<<<< HEAD
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+=======
+        <h3>Data HKI</h3>
+>>>>>>> cc245a6 (Update dashboard, tambah our, styles tabel tambah dan edit)
     </header>
     
     <?php include_once("../template/sidebar.php"); ?>

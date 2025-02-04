@@ -27,7 +27,11 @@ $result = mysqli_query($mysqli, "SELECT * FROM konferensi_1 $where ORDER BY id_k
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+<<<<<<< HEAD
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
+=======
+        <h3>Data Konferensi</h3>
+>>>>>>> cc245a6 (Update dashboard, tambah our, styles tabel tambah dan edit)
     </header>
     
     <?php include_once("../template/sidebar.php"); ?>

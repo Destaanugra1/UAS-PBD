@@ -16,7 +16,11 @@ $result = mysqli_query($mysqli, "SELECT * FROM mahasiswa_1 $where ORDER BY npm_1
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Halaman Data Mahasiswa Kelas 3B</title>
+=======
+    <title>Halaman Data Mahasiswa</title>
+>>>>>>> cc245a6 (Update dashboard, tambah our, styles tabel tambah dan edit)
     <link rel="stylesheet" href="../page.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -29,13 +33,20 @@ $result = mysqli_query($mysqli, "SELECT * FROM mahasiswa_1 $where ORDER BY npm_1
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+<<<<<<< HEAD
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt="Profile"> </div>
+=======
+        <h3>Data Mahasiswa</h3>
+>>>>>>> cc245a6 (Update dashboard, tambah our, styles tabel tambah dan edit)
     </header>
 
     <?php include_once("../template/sidebar.php"); ?>
 
     <div class="container mt-5">
+<<<<<<< HEAD
         <h1>Data Mahasiswa</h1>
+=======
+>>>>>>> cc245a6 (Update dashboard, tambah our, styles tabel tambah dan edit)
         <form action="" method="GET" class="d-flex gap-2 align-items-center">
             <div class="form-group">
                 <input type="text" name="search" class="form-control" placeholder="Cari mahasiswa..." value="<?php echo $search; ?>">

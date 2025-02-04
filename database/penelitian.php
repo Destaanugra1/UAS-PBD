@@ -1,6 +1,13 @@
 <?php
 include_once("../koneksi.php");
 $result = mysqli_query($mysqli, "SELECT * FROM penelitian_1 ORDER BY id_penelitian_1 DESC");
+$where = "";
+if (!empty($search)) {
+    $where = "WHERE nama_dosen_1 LIKE '%$search%' 
+              OR nidn_1 LIKE '%$search%' 
+              OR fakultas_1 LIKE '%$search%' 
+              OR program_studi_1 LIKE '%$search%'";
+}
 ?>
 
 <!DOCTYPE html>

@@ -31,11 +31,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM anggota_penelitian_1 $where ORDER
 <body class="body" id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-<<<<<<< HEAD
         <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt="Profile"> </div>
-=======
-        <h3>Data Anggota Penelitian</h3>
->>>>>>> cc245a6 (Update dashboard, tambah our, styles tabel tambah dan edit)
     </header>
     
     <?php include_once("../template/sidebar.php"); ?>

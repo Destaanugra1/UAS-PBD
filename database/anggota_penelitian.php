@@ -21,6 +21,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM anggota_penelitian_1 $where ORDER
     <title>Halaman Data Anggota Penelitian</title>
     <link rel="stylesheet" href="../page.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <style>
       body {
@@ -45,6 +46,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM anggota_penelitian_1 $where ORDER
                     placeholder="Cari anggota..."
                     value="<?php echo $search; ?>">
             </div>
+            <?php if (!empty($search)): ?>
+                <a href="?" class="btn btn-secondary h-100">Reset</a>
+            <?php endif; ?>
             <button type="submit" class="btn btn-primary h-100">Cari</button>
         </form>
     
@@ -74,8 +78,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM anggota_penelitian_1 $where ORDER
                     echo "<td>".$data['npm_1']."</td>";
                     echo "<td>".$data['peran_dalam_penelitian_1']."</td>";
                     echo "<td>
-                        <a href='../ubah/ubah_anggota_penelitian.php?id_anggota_1=".$data['id_anggota_1']."' class='btn btn-warning btn-sm'>Edit</a> 
-                        <a href='#' onclick='confirmDelete(".$data['id_anggota_1'].")' class='btn btn-danger btn-sm'>Delete</a>
+                        <a href='../ubah/ubah_anggota_penelitian.php?id_anggota_1=".$data['id_anggota_1']."' class='btn btn-warning btn-sm'><i class='bi bi-pencil'></i></a> 
+                        <a href='#' onclick='confirmDelete(".$data['id_anggota_1'].")' class='btn btn-danger btn-sm'><i class='bi bi-trash'></i></a>
                     </td>";
                     echo "</tr>";
                 }

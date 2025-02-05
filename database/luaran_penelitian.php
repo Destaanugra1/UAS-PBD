@@ -81,8 +81,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM luaran_penelitian_1 $where ORDER 
                     echo "<td>".$data['penerbit_1']."</td>";
                     echo "<td>".$data['tahun_terbit_1']."</td>";
                     echo "<td>
-                        <a href='../ubah/ubah_luaran.php?id_luaran_1=".$data['id_luaran_1']."' class='btn btn-warning btn-sm'><i class='bi bi-pencil'></a> 
-                        <a href='#' onclick='confirmDelete(".$data['id_luaran_1'].")' class='btn btn-danger btn-sm'><i class='bi bi-trash'></a>
+                        <a href='../ubah/ubah_luaran.php?id_luaran_1=".$data['id_luaran_1']."' class='btn btn-warning btn-sm'><i class='bi bi-pencil'></i></a> 
+                        <a href='#' onclick='confirmDelete(".$data['id_luaran_1'].")' class='btn btn-danger btn-sm'><i class='bi bi-trash'></i></a>
                     </td>";
                     echo "</tr>";
                 }

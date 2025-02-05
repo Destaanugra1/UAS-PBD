@@ -14,13 +14,10 @@ $result = mysqli_query($mysqli, "SELECT * FROM pendanaan_eksternal_1 $where ORDE
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
     <title>Halaman Data Pendanaan Eksternal Kelas 3B</title>
-=======
-    <title>Halaman Data Pendanaan Eksternal</title>
->>>>>>> cc245a6 (Update dashboard, tambah our, styles tabel tambah dan edit)
     <link rel="stylesheet" href="../page.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <style>
       body {
@@ -31,11 +28,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM pendanaan_eksternal_1 $where ORDE
 <body id="body-pd">
     <header class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-<<<<<<< HEAD
-        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt=""> </div>
-=======
-        <h3>Data Pendanaan Eksternal</h3>
->>>>>>> cc245a6 (Update dashboard, tambah our, styles tabel tambah dan edit)
+        <h3>Pendaan Eksternal</h3>
     </header>
     
     <?php include_once("../template/sidebar.php"); ?>
@@ -49,10 +42,13 @@ $result = mysqli_query($mysqli, "SELECT * FROM pendanaan_eksternal_1 $where ORDE
                     placeholder="Cari pendanaan..."
                     value="<?php echo $search; ?>">
             </div>
+            <?php if (!empty($search)): ?>
+                <a href="?" class="btn btn-secondary h-100">Reset</a>
+            <?php endif; ?>
             <button type="submit" class="btn btn-primary h-100">Cari</button>
         </form>
     
-        <a href="../tambah/tambah_pendanaan.php" class="btn btn-success my-3">Tambah Dana</a>
+        <a href="../index.php" class="btn btn-success my-3">Tambah Dana</a>
     
         <table class="table table-bordered table-striped">
             <thead class="table-dark">
@@ -78,8 +74,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM pendanaan_eksternal_1 $where ORDE
                     echo "<td>".$data['jumlah_dana_1']."</td>";
                     echo "<td>".$data['tahun_1']."</td>";
                     echo "<td>
-                        <a href='../ubah/ubah_pendanaan.php?id_pendanaan_1=".$data['id_pendanaan_1']."' class='btn btn-warning btn-sm'>Edit</a> 
-                        <a href='#' onclick='confirmDelete(".$data['id_pendanaan_1'].")' class='btn btn-danger btn-sm'>Delete</a>
+                        <a href='../ubah/ubah_pendanaan.php?id_pendanaan_1=".$data['id_pendanaan_1']."' class='btn btn-warning btn-sm'><i class='bi bi-pencil'></i></a> 
+                        <a href='#' onclick='confirmDelete(".$data['id_pendanaan_1'].")' class='btn btn-danger btn-sm'><i class='bi bi-trash'></i></a>
                     </td>";
                     echo "</tr>";
                 }
@@ -87,7 +83,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM pendanaan_eksternal_1 $where ORDE
             </tbody>
         </table>
         
-        <a href="../index.php" class="btn btn-secondary">Kembali</a>
+        <a href="../database/pendanaan_eksternal.php" class="btn btn-secondary">Kembali</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

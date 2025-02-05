@@ -4,13 +4,16 @@ include_once("../koneksi.php");
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 $where = "";
 if (!empty($search)) {
-    $where = "WHERE nama_dosen_1 LIKE '%$search%' 
-              OR nidn_1 LIKE '%$search%' 
-              OR fakultas_1 LIKE '%$search%' 
-              OR program_studi_1 LIKE '%$search%'";
+    $where = "WHERE id_penelitian_1  LIKE '%$search%' 
+                OR judul_1 LIKE '%$search%' 
+                OR tahun_penelitian_1 LIKE '%$search%' 
+                OR id_dosen_1 LIKE '%$search%' 
+                OR sumber_dana_1 LIKE '%$search%' 
+                OR jumlah_dana_1 LIKE '%$search%' 
+                OR status_penelitian_1 LIKE '%$search%'";
 }
 $result = mysqli_query($mysqli, "SELECT * FROM penelitian_1 $where ORDER BY id_penelitian_1 DESC");
-?>
+?>  
 
 <!DOCTYPE html>
 <html>
@@ -18,6 +21,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM penelitian_1 $where ORDER BY id_p
     <title>Data Penelitian</title>
     <link rel="stylesheet" href="../page.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <style>
       body {
@@ -42,12 +46,15 @@ $result = mysqli_query($mysqli, "SELECT * FROM penelitian_1 $where ORDER BY id_p
                     placeholder="Cari penelitian..."
                     value="<?php echo $search; ?>">
             </div>
+            <?php if (!empty($search)): ?>
+                <a href="?" class="btn btn-secondary h-100">Reset</a>
+            <?php endif; ?>
             <button type="submit" class="btn btn-primary h-100">Cari</button>
         </form>
     
         <a href="../tambah/tambah_penelitian.php" class="btn btn-success my-3">Tambah Penelitian</a>
     
-        <table class="table table-bordered table-striped">
+        <table width="90%" border=1 class="table table-bordered table-striped">
             <thead class="table-dark">
                 <tr>
                     <th>No</th>
@@ -75,8 +82,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM penelitian_1 $where ORDER BY id_p
                     echo "<td>".$data['jumlah_dana_1']."</td>";
                     echo "<td>".$data['status_penelitian_1']."</td>";
                     echo "<td>
-                        <a href='../ubah/ubah_penelitian.php?id_penelitian_1=".$data['id_penelitian_1']."' class='btn btn-warning btn-sm'>Edit</a> 
-                        <a href='#' onclick='confirmDelete(".$data['id_penelitian_1'].")' class='btn btn-danger btn-sm'>Delete</a>
+                        <a href='../ubah/ubah_penelitian.php?id_penelitian_1=".$data['id_penelitian_1']."' class='btn btn-warning btn-sm me-1'><i class='bi bi-pencil'></i></a> 
+                        <a href='#' onclick='confirmDelete(".$data['id_penelitian_1'].")' class='btn btn-danger btn-sm'><i class='bi bi-trash'></i></a>
                     </td>";
                     echo "</tr>";
                 }

@@ -56,15 +56,12 @@ body {
 
 .hero-slider {
     position: relative;
-    background-image: url('gerak.gif');
-    background-size: cover;
-    background-position: center;
+    background-color: #7DA0CA;
     border-radius: 1rem;
     margin: 2rem;
     padding: 2rem;
     display: flex;
     align-items: center;
-    color: white;
 }
 
 .hero-content {

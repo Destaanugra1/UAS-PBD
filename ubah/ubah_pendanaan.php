@@ -21,49 +21,49 @@
 </head>
 <body>
   <div class="container">
-    <h3>Ubah Data Mahasiswa</h3>
+    <h3>Ubah Data Pendanaan</h3>
     <?php
     include "../koneksi.php";
-    $npm_1 = $_GET['npm_1'];
-    $mysqli = mysqli_query($mysqli, "SELECT * FROM mahasiswa_1 WHERE npm_1='$npm_1'");
+    $id_pendanaan_1 = $_GET['id_pendanaan_1'];
+    $mysqli = mysqli_query($mysqli, "SELECT * FROM pendanaan_eksternal_1 WHERE id_pendanaan_1='$id_pendanaan_1'");
     while ($data = mysqli_fetch_array($mysqli)) {
     ?>
-      <form action="../update/update_mahasiswa.php" method="post">
+      <form action="../update/update_pendanaan.php" method="post">
         <table class="table table-striped table-bordered">
           <tr>
-            <td>Nama Mahasiswa</td>
+            <td>ID Pendanaan</td>
             <td>
-              <input type="hidden" name="npm_1" value="<?php echo $data['npm_1']; ?>">
-              <input type="text" name="nama_mahasiswa_1" class="form-control" value="<?php echo $data['nama_mahasiswa_1']; ?>">
+              <input type="hidden" name="id_pendanaan_1" value="<?php echo $data['id_pendanaan_1']; ?>">
+              <input type="number" name="id_pendanaan_1" class="form-control" value="<?php echo $data['id_pendanaan_1']; ?>" readonly>
             </td>
           </tr>
           <tr>
-            <td>Fakultas</td>
+            <td>ID Penelitian</td>
             <td>
-              <input type="text" name="fakultas_1" class="form-control" value="<?php echo $data['fakultas_1']; ?>">
+              <input type="number" name="id_penelitian_1" class="form-control" value="<?php echo $data['id_penelitian_1']; ?>">
             </td>
           </tr>
           <tr>
-            <td>Program Studi</td>
+            <td>Nama Pemeberi Dana</td>
             <td>
-              <input type="text" name="program_studi_1" class="form-control" value="<?php echo $data['program_studi_1']; ?>">
+              <input type="text" name="nama_pemberi_dana_1" class="form-control" value="<?php echo $data['nama_pemberi_dana_1']; ?>">
             </td>
           </tr>
           <tr>
-            <td>Email</td>
+            <td>Jumlah Dana</td>
             <td>
-              <input type="text" name="email_1" class="form-control" value="<?php echo $data['email_1']; ?>">
+              <input type="number" name="jumlah_dana_1" class="form-control" value="<?php echo $data['jumlah_dana_1']; ?>">
             </td>
           </tr>
           <tr>
-            <td>No Telepon</td>
+            <td>Tahun</td>
             <td>
-              <input type="text" name="no_telepon_1" class="form-control" value="<?php echo $data['no_telepon_1']; ?>">
+              <input type="number" name="tahun_1" class="form-control" value="<?php echo $data['tahun_1']; ?>">
             </td>
           </tr>
         </table>
         <div class="form-group">
-          <input type="button" value="Kembali" class="btn btn-secondary" onclick="window.location.href='../database/mahasiswa.php'">
+          <input type="button" value="Kembali" class="btn btn-secondary" onclick="window.location.href='../database/pendanaan_eksternal.php'">
           <input type="submit" name="update" value="Update" class="btn btn-primary">
         </div>
       </form>

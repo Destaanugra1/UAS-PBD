@@ -26,9 +26,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM pendanaan_eksternal_1 $where ORDE
     </style>
 </head>
 <body id="body-pd">
-    <header class="header" id="header">
+    <header style="background-color:  #052659;" class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <h3>Pendaan Eksternal</h3>
+        <h3 class="text-white">Pendaan Eksternal</h3>
     </header>
     
     <?php include_once("../template/sidebar.php"); ?>
@@ -71,7 +71,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM pendanaan_eksternal_1 $where ORDE
                     echo "<td>".$data['id_pendanaan_1']."</td>";
                     echo "<td>".$data['id_penelitian_1']."</td>";
                     echo "<td>".$data['nama_pemberi_dana_1']."</td>";
-                    echo "<td>".$data['jumlah_dana_1']."</td>";
+                    echo "<td>Rp.".$data['jumlah_dana_1']."</td>";
                     echo "<td>".$data['tahun_1']."</td>";
                     echo "<td>
                         <a href='../ubah/ubah_pendanaan.php?id_pendanaan_1=".$data['id_pendanaan_1']."' class='btn btn-warning btn-sm'><i class='bi bi-pencil'></i></a> 

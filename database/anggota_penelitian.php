@@ -27,17 +27,23 @@ $result = mysqli_query($mysqli, "SELECT * FROM anggota_penelitian_1 $where ORDER
       body {
         margin-top: 15vh;
       }
+      /* nav {
+        background-color: #052659 !important;
+      } */
     </style>
 </head>
 <body class="body" id="body-pd">
-    <header class="header" id="header">
-        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <div class="header_img"> <img src="https://i.imgur.com/hczKIze.jpg" alt="Profile"> </div>
-    </header>
+    <nav class="nav-bg" >
+        <header class="header" style="background-color:  #052659;" id="header">
+            <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+            <h3 class="text-white">Anggota Penelitian</h3>
+        </header>
+    </nav>
     
     <?php include_once("../template/sidebar.php"); ?>
     
-    <div class="container mt-5">
+    <div class="container mt-1 p-5">
+
         <form action="" method="GET" class="d-flex gap-2 align-items-center">
             <div class="form-group">
                 <input type="text" 
@@ -91,6 +97,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM anggota_penelitian_1 $where ORDER
     </div>
     
     <script>
+        // document.getElementById("myElement").classList.add("bgnav");
         document.addEventListener("DOMContentLoaded", function() { 
             const toggleNavbar = (toggleId, navId, bodyId, headerId) => {
                 const toggle = document.getElementById(toggleId),

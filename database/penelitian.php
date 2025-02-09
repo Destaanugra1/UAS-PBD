@@ -30,9 +30,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM penelitian_1 $where ORDER BY id_p
     </style>
 </head>
 <body id="body-pd">
-    <header class="header" id="header">
-        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <h3>Data Penelitian</h3>
+    <header style="background-color: #052659;" class="header" id="header">
+        <div class="header_toggle"> <i class='bx bx-menu text-white' id="header-toggle"></i> </div>
+        <h3 class="text-white">Data Penelitian</h3>
     </header>
     
     <?php include_once("../template/sidebar.php"); ?>
@@ -79,7 +79,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM penelitian_1 $where ORDER BY id_p
                     echo "<td>".$data['tahun_penelitian_1']."</td>";
                     echo "<td>".$data['id_dosen_1']."</td>";
                     echo "<td>".$data['sumber_dana_1']."</td>";
-                    echo "<td>".$data['jumlah_dana_1']."</td>";
+                    echo "<td>Rp.".$data['jumlah_dana_1']."</td>";
                     echo "<td>".$data['status_penelitian_1']."</td>";
                     echo "<td>
                         <a href='../ubah/ubah_penelitian.php?id_penelitian_1=".$data['id_penelitian_1']."' class='btn btn-warning btn-sm me-1'><i class='bi bi-pencil'></i></a> 

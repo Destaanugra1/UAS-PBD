@@ -26,9 +26,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM hki_1 $where ORDER BY id_hki_1 DE
     </style>
 </head>
 <body id="body-pd">
-    <header class="header" id="header">
+    <header style="background-color:  #052659;" class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <h3>Data HKI</h3>        
+        <h3 class="text-white">Data HKI</h3>        
     </header>
     
     <?php include_once("../template/sidebar.php"); ?>

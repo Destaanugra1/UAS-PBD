@@ -25,14 +25,18 @@ $result = mysqli_query($mysqli, "SELECT * FROM dosen_1 $where ORDER BY id_dosen_
       body {
         margin-top: 15vh;
       }
+      nav {
+        background-color: #052659 !important;
+      }
     </style>
 </head>
 <body id="body-pd" class="penelitian">
-    <header class="header" id="header">
-        <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <h3>Data Dosen</h3>
-    </header>
-
+    <nav class="nav-bg" >
+        <header class="header" style="background-color: #052659;" id="header">
+            <div class="header_toggle"> <i class='bx bx-menu text-white' id="header-toggle"></i> </div>
+            <h3 class="text-white">Data Dosen</h3>
+        </header>
+    </nav>
     <?php include_once("../template/sidebar.php"); ?>
 
     <div class="container ">

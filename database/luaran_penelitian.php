@@ -31,9 +31,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM luaran_penelitian_1 $where ORDER 
     </style>
 </head>
 <body class="body" id="body-pd">
-    <header class="header" id="header">
+    <header  style="background-color:  #052659;" class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-<h3>luaran penelitian</h3>
+<h3 class="text-white">luaran penelitian</h3>
     </header>
     
     <?php include_once("../template/sidebar.php"); ?>

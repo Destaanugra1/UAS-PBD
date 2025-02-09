@@ -26,9 +26,9 @@ $result = mysqli_query($mysqli, "SELECT * FROM konferensi_1 $where ORDER BY id_k
     </style>
 </head>
 <body id="body-pd">
-    <header class="header" id="header">
+    <header style="background-color:  #052659;" class="header" id="header">
         <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
-        <h3>Data Konfrensi</h3>
+        <h3 class="text-white">Data Konfrensi</h3>
     </header>
     
     <?php include_once("../template/sidebar.php"); ?>
@@ -74,8 +74,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM konferensi_1 $where ORDER BY id_k
                     echo "<td>".$data['lokasi_1']."</td>";
                     echo "<td>".$data['tanggal_1']."</td>";
                     echo "<td>
-                        <a href='../ubah/ubah_konfrensi.php?id_konferensi_1=".$data['id_konferensi_1']."' class='btn btn-warning btn-sm'><i class='bi bi-pencil'></a> 
-                        <a href='#' onclick='confirmDelete(".$data['id_konferensi_1'].")' class='btn btn-danger btn-sm'><i class='bi bi-trash'></a>
+                        <a href='../ubah/ubah_konfrensi.php?id_konferensi_1=".$data['id_konferensi_1']."' class='btn btn-warning btn-sm'><i class='bi bi-pencil'></i></a> 
+                        <a href='#' onclick='confirmDelete(".$data['id_konferensi_1'].")' class='btn btn-danger btn-sm'><i class='bi bi-trash'></i></a>
                     </td>";
                     echo "</tr>";
                 }

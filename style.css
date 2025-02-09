@@ -169,7 +169,7 @@ body {
 .button7,
 .button8,
 .button9 {
-  background-color: white;
+  background-color: #fef9e1;
   color: black;
   border-radius: 1rem;
   padding: 1.5rem;
@@ -177,6 +177,7 @@ body {
   align-items: center;
   gap: 1rem;
   text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .button1:hover,
@@ -190,6 +191,7 @@ body {
 .button9:hover {
   background-color: #5483b3;
   color: white;
+  transition-duration: 0.3s;
 }
 
 .info-card h3 {

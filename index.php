@@ -1,27 +1,58 @@
 <html>
   <head>
+  <script src="https://cdn.tailwindcss.com"></script>
     <title>Project UAS Perancangan Basis Data</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
     <script src="https://kit.fontawesome.com/8d0182f1bd.js" crossorigin="anonymous"></script>
   </head>
-  <body>
-    <header>
-        <nav class="navbar">
-            <div class="navbar-container">
-                <a href="#" class="logo">Kelompok 1</a>
-            </div>
-        </nav>
-    </header>
-
-    <main>
-        <section class="hero-slider">
+  <body class="bg-gray-900 text-white font-roboto">
+    <header class="flex justify-between items-center p-4 border-b border-gray-700">
+   <div class="flex items-center space-x-2">
+    <!-- <img alt="Google I/O logo" class="h-8" height="40" src="https://storage.googleapis.com/a1aa/image/Kos46uLO26Mm0zM4JZbp2WWCxWg8CJ3S8HsyJGiHW0c.jpg" width="40"/> -->
+    <span class="text-xl font-bold">
+     Kelompok 1
+    </span>
+   </div>
+   <nav class="hidden md:flex space-x-6">
+    <a class="hover:underline" href="#">
+     Explore
+    </a>
+    <a class="hover:underline" href="#">
+     Community
+    </a>
+    <a class="hover:underline" href="#">
+     About
+    </a>
+   </nav>
+  </header>
+  <main class=" flex flex-col md:flex-row items-center justify-between p-8 md:p-16">
+   <div class="md:w-1/2 space-y-4">
+    <h1 class="text-5xl md:text-6xl font-bold">
+     Pengolahan Data
+    </h1>
+    <p class="text-lg md:text-xl">
+    Selamat Datang di Project UAS Perancangan Basis Data
+    kami
+    </p>
+    <button class="bg-blue-600 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-blue-700" onclick="document.getElementById('info-cards').scrollIntoView({ behavior: 'smooth' });">
+     Telusuri
+    </button>
+   </div>
+   <div class="md:w-1/2 mt-8 md:mt-0">
+    <img alt="Abstract colorful 3D shapes" class="w-full" height="400" src="assets/avatar.png" width="600"/>
+   </div>
+  </main>
+  <main>
+        <!-- <section class="hero-slider">
             <div class="hero-content">
                 <h1>DATABASE</h1>
                 <p>Selamat Datang di Project UAS Perancangan Basis Data.</p>
             </div>
-        </section>
+        </section> -->
 
-        <div class="info-cards">
+        <div id="info-cards" class="info-cards">
             <a href="database/dosen.php" class="button1">
                 <i class="fa-solid fa-chalkboard-user"></i>
                 <h3>Data Dosen</h3>
